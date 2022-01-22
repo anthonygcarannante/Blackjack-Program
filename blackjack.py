@@ -28,17 +28,26 @@ while sum(player_cards) <= 21:
     if sum(player_cards) == 21:
         break
     else:    
-        action_taken = str(input("Do you want to hit or stay?  "))
+        action_taken = str(input("Do you want to hit, double, or stay?  "))
         if action_taken == "hit":
             player_cards.append(random.randint(1,11))
             # if player has at least 11 and hits an ace, then the ace counts as 1
             if player_cards[-1] == 11 and sum(player_cards) > 10:
                 player_cards[-1] -= 10
             print(f"You:    {str(sum(player_cards))}, {player_cards} ")
-        else:
+        elif action_taken == "double" and len(player_cards) == 2:
+            player_cards.append(random.randint(1,11))
+            # if player has at least 11 and hits an ace, then the ace counts as 1
+            if player_cards[-1] == 11 and sum(player_cards) > 10:
+                player_cards[-1] -= 10
+            print(f"You:    {str(sum(player_cards))}, {player_cards} ")
+            break
+        elif action_taken == "stay":
             print(f"You:    {str(sum(player_cards))}, {player_cards} ")
             print(f"Dealer: {str(sum(dealer_cards))}, {dealer_cards} ")
             break
+        else:
+            print("Incorrect action. Try hit, stay, or double.")
 
 # Sum of the Dealer Cards
 while sum(dealer_cards) <= 16 and sum(player_cards) <= 21:
