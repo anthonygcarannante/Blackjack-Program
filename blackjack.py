@@ -8,18 +8,21 @@ dealer_cards = []
 # Player Cards
 player_cards = []
 
+# Define card options so they match the probabilities in a deck of cards. There are four "tens" in the deck for blackjack.
+cards = [2,3,4,5,6,7,8,9,10,10,10,10,11]
+
 print("-----------------------------------")
 
 # Deal the cards & Display the cards
 # Dealer's Cards
 while len(dealer_cards) != 2:
-    dealer_cards.append(random.randint(1, 11))
+    dealer_cards.append(random.choice(cards))
     if len(dealer_cards) == 2:
         print(f"Dealer: X, {dealer_cards[1]}")
 
 # Player's Cards
 while len(player_cards) != 2:
-    player_cards.append(random.randint(1, 11))
+    player_cards.append(random.choice(cards))
     if len(player_cards) == 2:
         print(f"You:    {player_cards[0]}, {player_cards[1]}")
 
@@ -30,13 +33,13 @@ while sum(player_cards) <= 21:
     else:    
         action_taken = str(input("Do you want to hit, double, or stay?  "))
         if action_taken == "hit":
-            player_cards.append(random.randint(1,11))
+            player_cards.append(random.choice(cards))
             # if player has at least 11 and hits an ace, then the ace counts as 1
             if player_cards[-1] == 11 and sum(player_cards) > 10:
                 player_cards[-1] -= 10
             print(f"You:    {str(sum(player_cards))}, {player_cards} ")
         elif action_taken == "double" and len(player_cards) == 2:
-            player_cards.append(random.randint(1,11))
+            player_cards.append(random.choice(cards))
             # if player has at least 11 and hits an ace, then the ace counts as 1
             if player_cards[-1] == 11 and sum(player_cards) > 10:
                 player_cards[-1] -= 10
@@ -52,7 +55,7 @@ while sum(player_cards) <= 21:
 # Sum of the Dealer Cards
 while sum(dealer_cards) <= 16 and sum(player_cards) <= 21:
     print(f"Dealer HITS")
-    dealer_cards.append(random.randint(1,11))
+    dealer_cards.append(random.choice(cards))
     # if the dealer has at least 11 and hits an ace, then the ace counts as 1
     if dealer_cards[-1] == 11 and sum(dealer_cards) > 10:
         dealer_cards[-1] -= 10
