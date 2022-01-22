@@ -1,5 +1,9 @@
 import random
 
+# def bet_size():
+#     bet = int(input("How much would you like to bet? "))
+#     return bet
+
 # Deal the cards & Display the cards
 def dealing_cards(deck, pcards, dcards):
     # Dealer's Cards
@@ -20,6 +24,8 @@ def dealing_cards(deck, pcards, dcards):
 def player_action(deck, pcards, dcards):
     while sum(pcards) <= 21:
         if sum(pcards) == 21:
+            print(f"You:    {str(sum(pcards))}, {pcards} ")
+            print(f"Dealer: {str(sum(dcards))}, {dcards} ")
             break
         else:    
             action_taken = str(input("Do you want to hit, double, or stay?  "))
