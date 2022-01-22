@@ -14,13 +14,16 @@ cards = [2,3,4,5,6,7,8,9,10,10,10,10,11]
 
 print("-----------------------------------")
 
-# Call card deal, player, and dealer to act
+# Deal the cards
 dealing_cards(cards, player_cards, dealer_cards)
+
+# Player acts
 player_action(cards, player_cards, dealer_cards)
+
+# Dealer acts
 dealer_action(cards, player_cards, dealer_cards)
 
 # Player and Dealer Hand Comparisons 
-
 # If the player hits blackjack (i.e., 21 on their first two cards)
 if sum(player_cards) == 21 and len(player_cards) == 2:
     print(f"BLACKJACK! You WIN!")
